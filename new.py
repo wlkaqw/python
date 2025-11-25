@@ -1,4 +1,4 @@
- def is_prime(n):
+def is_prime(n):
     if n <= 1:
         return False
     if n == 2:
@@ -17,9 +17,7 @@ def func1(num):
             j = num//i
             if is_prime(j):
                 return True
-    return False
-
-def             
+    return False        
 
 
 

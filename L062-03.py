@@ -21,7 +21,7 @@ def is_dominated(tup1,tup2):
     return False
 
 def process_list(L):
-         # 筛选不被任何元组支配的元组
+        # 筛选不被任何元组支配的元组
     result = []
     for t in L:
         # 假设当前元组不被支配

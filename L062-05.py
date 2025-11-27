@@ -14,11 +14,11 @@ def classify_by_factor(tup):
         if cnt not in factor_dict:
             factor_dict[cnt] = []
         factor_dict[cnt].append(num)
-                                                                                                                        
+                                                                                        
     # 步骤2：对每个列表升序排序
     for cnt in factor_dict:
         factor_dict[cnt].sort()
-    
+     
     # 步骤3：按因子数量降序排列，转换为元组序列
     sorted_items = sorted(factor_dict.items(), key=lambda x: -x[0])
-    return tuple(sorted_items)
+    return tuple(sorted_items)  

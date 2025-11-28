@@ -1,41 +1,31 @@
-import math
+def func6101(weights):
+    ave=sum(weights)/len(weights)
+    var=0
+    for i in weights:
+        var+=(i-ave)**2
+    var/=ave
+    return f"{var:.3f}"
 
-def is_prime(n):
-    if n<=1:
-        return False
-    if n==2:
-        return True
-    if n%2==0:
-        return False
-    for i in range(3,int(n**0.5)+1,2):
-        if n%i==0:
-            return False
-    return True
-    
-def Try01(A,B):
+def func6102(elements):
     lst=[]
-    lst1=[]
-    for i in A:
-        if is_prime(i):
-            lst.append(i)
-    for i in lst:
-        if '3' in str(i) or '7' in str(i):
-            lst1.append(i)
+    for i in elements:
+        if i in lst:
+            continue
+    else:
+        lst.append(i)
+    return lst
 
-    points = []
-    for i in range(0, len(lst1) - 1, 2):
-        points.append( (lst1[i], lst1[i+1]) )
+def func6103(numbers):
+    num=len(numbers)
+    max_=max(numbers)
+    min_=min(numbers)
+    ave=sum(numbers)/num
+    return (num,max_,min_,ave)
 
-    m,n=B[0],B[1]
-    max_=-1
-    far=None
-    for (x,y) in points:
-        dist= ((m-x)**2+(n-y)**2)**0.5
-        if dist>max_:
-            max_=dist
-            far=[x,y]
-    return far
+def func6104(numbers):
+    return tuple(sorted(list(set(numbers))))
 
-if __name__ == '__main__':
-    print(Try01([2 ,68,4, 3, 5,7,90,11,13],[1,1]))
-    print(Try01([2 ,68,4, 3, 5,7,90,11,13,17],[1,1]))
+
+
+if __name__=="__main__":
+    print(func6104((96, 722, 895, 257, 257, 97, 162, 239, 37, 838, 865, 25, 549, 779, 159, 447, 877, 1, 68, 234)))

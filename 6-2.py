@@ -57,20 +57,36 @@ def func6206(lst1, lst2):
     return d
 
 def func6207(tp1, tp2):
-    pass
+    d={}
+    num=len(tp1)
+    for i in range(num):
+        d[tp1[i]]=tp2[i]
+    return d
 
 def func6208(prices, quantities):
-    pass
+    num=0
+    for i in prices:
+        if i in quantities:
+            num+=prices[i]*quantities[i]
+    return num
 
 def func6209(employee_dict):
-    pass
+    lst=[]
+    for i in employee_dict:
+        tp1=(i,employee_dict[i])
+        lst.append(tp1)
+    return sorted(lst, key=lambda x:x[1])
 
 #=====set==========
 def func6210(set1, set2):
-    pass
+    tp1=tuple(sorted(set1^set2))
+    tp2=tuple(sorted(set1&set2,reverse=True))
+    return tp1,tp2
 
 def func6211(set1, set2):
-    pass
+    tp1 = tuple(sorted(set1 | set2))
+    tp2 = tuple(sorted(set1 & set2, reverse=True))
+    return tp1, tp2
 
 if __name__=="__main__":
-    print(func6206(["Williams", "Brown", "Jones"], ["Isabella", "Sophia", "Mia"]))
+    print(func6211({1, 2, 3}, {3, 4, 5}))

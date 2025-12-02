@@ -1,6 +1,6 @@
 def L081_07(s):
     lst=[]
-    s=s.swapcase()
+    s=s.swapcase() #大小写转换
     s=s[::-1]
     for char in s:
         if char.islower():

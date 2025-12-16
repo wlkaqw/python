@@ -46,7 +46,7 @@ def func5(n1,n2):
 def func6():
     
 
-#print(func2([2,7,11,15],9))
+print(func2([2,7,11,15],9))
 #print(func3([1,5,7,9],[2,3,4,6,8,10]))
 #print(func4(29))
 print(func5(284,220))

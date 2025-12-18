@@ -86,30 +86,5 @@ def func08(string,ext):
   
 
 print(func08("aba.txt aBa.doc    a..a.txt abba.ttxt", "docx"))
-<<<<<<< HEAD
-=======
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 01c363d475d910f09c2fd6bc4f1872fb1c943b51
-        

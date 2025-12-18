@@ -6,13 +6,71 @@ def func2(rate,money,years):
     pass
 
 def func3(m,n):
-    pass
+    # 确定区间的上下边界
+    low = min(m, n)
+    high = max(m, n)
+    
+    # 小于2的区间无质数
+    if high < 2:
+        return 0
+    
+    # 埃拉托斯特尼筛法：生成2到high的质数表
+    is_prime = [True] * (high + 1)
+    is_prime[0] = is_prime[1] = False  # 0和1不是质数
+    for i in range(2, int(high ** 0.5) + 1):
+        if is_prime[i]:
+            is_prime[i*i : high+1 : i] = [False] * len(is_prime[i*i : high+1 : i])
+    
+    # 统计[low, high]内的质数数量
+    count = 0
+    for num in range(max(low, 2), high + 1):  # 从2开始统计（low可能小于2）
+        if is_prime[num]:
+            count += 1
+    return count
 
 def func4(lst):
-    pass
+    # 列表长度不足2，无法交易
+    if len(lst) < 2:
+        return 0
+    
+    min_price = lst[0]
+    max_profit = 0
+    
+    for price in lst[1:]:
+        # 更新最低买入价
+        if price < min_price:
+            min_price = price
+        # 计算当前利润并更新最大利润
+        else:
+            profit = price - min_price
+            if profit > max_profit:
+                max_profit = profit
+    
+    return max_profit
   
 def func5(scoreDic,x):
-    pass
+    # 步骤1：统计每门课程的总分、参与人数、以及成绩≥x的人数
+    course_stats = {}  # 结构：{课程编号: {"total": 总分, "count": 参与人数, "pass_count": 达标人数}}
+    for stu_id, stu_courses in scoreDic.items():
+        for course_id, score in stu_courses.items():
+            # 初始化课程统计信息
+            if course_id not in course_stats:
+                course_stats[course_id] = {"total": 0, "count": 0, "pass_count": 0}
+            # 累计总分和参与人数
+            course_stats[course_id]["total"] += score
+            course_stats[course_id]["count"] += 1
+            # 统计成绩≥x的人数
+            if score >= x:
+                course_stats[course_id]["pass_count"] += 1
+    
+    # 步骤2：筛选平均分（整数部分）≥x的课程，并构建结果字典
+    result = {}
+    for course_id, stats in course_stats.items():
+        avg = stats["total"] // stats["count"]  # 整数部分（地板除）
+        if avg >= x:
+            result[course_id] = stats["pass_count"]
+    
+    return result
 
 def inz(n):
     lst1=[]
@@ -69,6 +127,8 @@ def func8(s):
     return has_digit and has_lower and has_upper and not same
 
 if __name__ == "__main__":
+    print(func3(-5,11))
+    print(func5({2501: {102: 62, 103: 83, 104: 44, 105: 73}, 2502: {101: 48, 103: 63, 104: 74, 105: 54}, 2503: {101: 56, 103: 38, 104: 98, 105: 41}, 2504: {101: 51, 102: 53, 103: 73, 104: 55, 105: 53}, 2505: {101: 70, 102: 60, 103: 45, 104: 73, 105: 91}}, 60))
     print(func6([39, 180, 123, 195, 156, 22, 91, 133, 26, 184]))  # [22, 91, 123, 133]
     print(func6([80, 84, 94, 188, 136, 68])) #[]
     print(func7("1a2b3.54x",(2, 4)))

@@ -1,6 +1,14 @@
 import math
-def func1(rec1,rec2):
-    pass
+def func1(rec1, rec2):
+    x1_1, y1_1, x2_1, y2_1 = rec1  # 0, 2, 4, 6
+    x1_2, y1_2, x2_2, y2_2 = rec2  # 2, 0, 6, 4
+    
+    # x轴判断：rec1左 < rec2右 (0 < 6) 且 rec2左 < rec1右 (2 < 4) → True
+    x_overlap = (x1_1 < x2_2) and (x1_2 < x2_1)
+    # y轴判断：rec1下 < rec2上 (2 < 4) 且 rec2下 < rec1上 (0 < 6) → True
+    y_overlap = (y1_1 < y2_2) and (y1_2 < y2_1)
+    
+    return x_overlap and y_overlap  # True and True → 返回True
 
 def func2(rate,money,years):
     pass
@@ -127,6 +135,7 @@ def func8(s):
     return has_digit and has_lower and has_upper and not same
 
 if __name__ == "__main__":
+    print(func1([0,2,4,6], [2,0,6,4]))
     print(func3(-5,11))
     print(func5({2501: {102: 62, 103: 83, 104: 44, 105: 73}, 2502: {101: 48, 103: 63, 104: 74, 105: 54}, 2503: {101: 56, 103: 38, 104: 98, 105: 41}, 2504: {101: 51, 102: 53, 103: 73, 104: 55, 105: 53}, 2505: {101: 70, 102: 60, 103: 45, 104: 73, 105: 91}}, 60))
     print(func6([39, 180, 123, 195, 156, 22, 91, 133, 26, 184]))  # [22, 91, 123, 133]

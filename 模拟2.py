@@ -88,25 +88,3 @@ def func08(string,ext):
 print(func08("aba.txt aBa.doc    a..a.txt abba.ttxt", "docx"))
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        

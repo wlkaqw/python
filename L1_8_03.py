@@ -8,6 +8,7 @@ def longest_cyclic_common_substring(s1, s2):
 
     # 遍历所有可能的子串长度（最大为两个字符串的最小长度）
     max_possible_len = min(len1, len2)
+    res=''
     for l in range(1, max_possible_len + 1):
         # 遍历s1展开后的所有长度为l的子串（超过原长度则无需遍历）
         for i in range(len1):
@@ -15,8 +16,9 @@ def longest_cyclic_common_substring(s1, s2):
             # 检查该子串是否在s2的展开字符串中
             if substr in s2_expand:
                 if l > max_len:
-                    max_len = l
-    return max_len
+                    res=substr
+    return res
 
 # 计算并输出结果
-print(longest_cyclic_common_substring(s1, s2))
+print(longest_cyclic_common_substring('ABCDEFAGAGDEGKABUVKLM', 'MADJKLUVKL'))
+print(longest_cyclic_common_substring('abc','def'))

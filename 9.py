@@ -108,7 +108,6 @@ def func910(tp):
     lst2.sort()
     return tuple(lst2)
 
-
 print(func901(7,4,16))
 print(func902([],4))
 print(func903(16))

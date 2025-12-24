@@ -70,7 +70,6 @@ def func5(scoreDic,x):
             # 统计成绩≥x的人数
             if score >= x:
                 course_stats[course_id]["pass_count"] += 1
-    
     # 步骤2：筛选平均分（整数部分）≥x的课程，并构建结果字典
     result = {}
     for course_id, stats in course_stats.items():

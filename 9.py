@@ -95,18 +95,74 @@ def func909(tp,num):
     return tuple(lst1+lst2)
 
 def func910(tp):
+    if not tp:
+        return ()
     dic={}
-    str1=''.join(str(tp))
-    for i in range(10):
+    str1=''
+    for i in tp:
+        str1+=str(i)
+    for i in range(1,10):
         dic[i]=str1.count(str(i))
-    lst1=sorted(dic.items(),key=lambda x:x[1],reverse=True)
-    max_=lst1[0][0]
-    lst2=[]
-    for i in lst1:
-        if i[1]==max_:
-            lst2.append(i[0])
-    lst2.sort()
-    return tuple(lst2)
+    max_count = max(dic.values())
+    lst1=sorted([k for k, v in dic.items() if v == max_count])
+    return tuple(lst1)
+
+def inz(n):
+    if n==1:
+        return 1
+    lst=[]
+    for i in range(1,n+1):
+        if n%i==0:
+            lst.append(i)
+    return len(lst)
+
+def func911(tp):
+    dic={}
+    for i in tp:
+        count=inz(i)
+        if count not in dic:
+            dic[count]=[]
+        dic[count].append(i)
+    for i in dic:
+        dic[i].sort()
+    return tuple(sorted(dic.items(),key=lambda x:-x[0]))
+
+def func912(dict):
+    dic={}
+    for i in dict:
+        max_=max(dict[i])
+        dic[i]=max_
+    return dic
+
+def func913(dict):
+    if not dict:
+        return ()
+    res=[]
+    for i in range(4):
+        lst1=[]
+        for id,scores in dict.items():
+            lst1.append((scores[i],id))
+        max_score=max(x[0] for x in lst1)
+        top_id=sorted(id for score,id in lst1 if score==max_score)
+        res.append((max_score,top_id))
+    return tuple(res)
+
+def func914(lst):
+    lst1=[]
+    for i in lst:
+        for j in i:
+            if j not in lst1:
+                lst1.append(j)
+    res=[]
+    for j in lst1:
+        for i in lst:
+            if j not in i:
+                break
+        else:
+            res.append(j)
+    return tuple(sorted(res))
+
+
 
 print(func901(7,4,16))
 print(func902([],4))
@@ -117,4 +173,8 @@ print(func906(36))
 print(func907([627,517,990,26,275,704,148,998,371]))
 print(func908([750,146,177,354,378,260,130,71,105,368,435,950]))
 print(func909((2392,1353,6717,2430,8316,8006,3134,840,16,3738),20))
-print(func910((5875,7367,4784,4470,413,8631,3568,7886,9078,3623)))
+print(func910((9391, 5644, 3085, 2201, 7182, 4985,7843, 6369, 904, 9810, 3836, 3321, 979)))
+print(func911((3148, 9078, 1520, 4762, 7341, 3845,1888, 8435, 2696, 9000, 8074, 8488,3781)))
+print(func912({1006: (77, 77, 90, 95, 75, 84, 91, 78,91, 77), 1000: (96, 93, 87, 84, 99, 90,88, 85, 85, 97), 1001: (87, 82, 92, 89,95, 87, 74, 71, 86, 79)}))
+print(func913({1035: (99, 98, 92, 79), 1031: (70, 93,84, 71), 1019: (74, 82, 74, 95), 1040:(86, 77, 90, 90), 1039: (80, 82, 73, 76),1016: (99, 86, 86, 100), 1025: (71, 77,80, 77), 1009: (74, 84, 83, 87), 1036:(74, 88, 74, 94), 1004: (85, 78, 90, 100)}))
+print(func914([{1000, 1001, 1002, 1005}, {1001,1002, 1004, 1005}, {1000, 1001, 1002,1004, 1005}, {1000, 1001, 1002, 1003,1004, 1005}, {1000, 1001, 1004, 1005},{1000, 1001, 1002, 1003, 1004, 1005},{1000, 1001, 1002, 1003, 1004, 1005}]))

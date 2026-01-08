@@ -99,7 +99,6 @@ def func913(dic1):
 def func914(lst):
     return tuple(sorted(set.intersection(*[set(i) for i in lst])))
 
-
 def func915(lst):
     dic={}
     lst1=[item for i in lst for item in i]
@@ -110,6 +109,36 @@ def func915(lst):
 def func916(dicGroups,studentID):
         return tuple(sorted([x for x in dicGroups.keys() if studentID in dicGroups[x]]))
 
+def func917(s,n,m):
+    return s[0:n]+s[n:m+1][::-1]+s[m+1:]
+
+def func918(s,s1):
+    if s.find(s1)==-1:
+        return s
+    else:
+        a=s.find(s1)
+    return s[:a].upper()+s1+s[a+len(s1):].lower()
+
+def func919(s):
+    pattern=r'\d+'
+    lst1=[int(x) for x in re.findall(pattern,s)]
+    return tuple(sorted(lst1,reverse=True))
+
+def func920(s):
+    str1=''
+    str2=''
+    str3=''
+    for i in s:
+        if i.isdigit():
+            str1+=i
+        elif i.islower():
+            str2+=i
+        else:
+            str3+=i
+    if len(str2)<=len(str3):
+        return str2+str1+str3
+    else:
+        return str3+str1+str2
 
 print(func905([20, 984, -8, 987, 827,477, 797, 550,509, 487, 318, 353]))
 print(func906(9))
@@ -123,3 +152,7 @@ print(func913({1035: (99, 98, 92, 79), 1031: (70, 93,84, 71), 1019: (74, 82, 74,
 print(func914([{1000, 1001, 1002, 1005}, {1001,1002, 1004, 1005}, {1000, 1001, 1002,1004, 1005}, {1000, 1001, 1002, 1003,1004, 1005}, {1000, 1001, 1004, 1005},{1000, 1001, 1002, 1003, 1004, 1005},{1000, 1001, 1002, 1003, 1004, 1005}]))
 print(func915([{1009,1004,1005,1007},{1009,1002},{1008,1010,1003,1006},{1000,1002,1003},{1000,1002,1004,1007,1008,1009},{1002,1004,1007},{1001,1010,1002,1006},{1000,1002,1003,1005}]))
 print(func916({1008: [37, 19, 1, 13, 3, 39], 1006: [12,26, 37, 30, 10, 21], 1001: [12, 36, 15]} ,12))
+print(func917('abcdefgh',0,3))
+print(func918('abcdefGHJefG','efG'))
+print(func919('ab12c345567deft'))
+print(func920('ab12CD345567dEFt'))

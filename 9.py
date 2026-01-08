@@ -1,4 +1,5 @@
 import math
+import re
 def func901(f0,f1,num):
     lst=[f0,f1]
     if num<=0:
@@ -162,8 +163,53 @@ def func914(lst):
             res.append(j)
     return tuple(sorted(res))
 
+def func915(lst):
+    lst1=[]
+    for i in lst:
+        lst1.extend(i) 
+    dic={}
+    for i in lst1:
+        dic[i]=str(lst1).count(str(i))
+    return dic
+
+def func916(dicGroups,studentID):
+    lst1=[]
+    for i,j in dicGroups.items():
+        if studentID in j:
+            lst1.append(i)
+    return tuple(lst1)
+
+def func917(s,n,m):
+    return s[0:n]+s[n:m+1][::-1]+s[m+1:]
+
+def func918(s,s1):
+    if s.find(s1)==-1:
+        return s
+    else:
+        a=s.find(s1)
+    return s[:a].upper()+s1+s[a+len(s1):].lower()
 
 
+def func919(s):
+    pattern=r'\d+'
+    lst1=[int(x) for x in re.findall(pattern,s)]
+    return tuple(sorted(lst1,reverse=True))
+
+def func920(s):
+    str1=''
+    str2=''
+    str3=''
+    for i in s:
+        if i.isdigit():
+            str1+=i
+        elif i.islower():
+            str2+=i
+        else:
+            str3+=i
+    if len(str2)<=len(str3):
+        return str2+str1+str3
+    else:
+        return str3+str1+str2
 print(func901(7,4,16))
 print(func902([],4))
 print(func903(16))
@@ -178,3 +224,9 @@ print(func911((3148, 9078, 1520, 4762, 7341, 3845,1888, 8435, 2696, 9000, 8074, 
 print(func912({1006: (77, 77, 90, 95, 75, 84, 91, 78,91, 77), 1000: (96, 93, 87, 84, 99, 90,88, 85, 85, 97), 1001: (87, 82, 92, 89,95, 87, 74, 71, 86, 79)}))
 print(func913({1035: (99, 98, 92, 79), 1031: (70, 93,84, 71), 1019: (74, 82, 74, 95), 1040:(86, 77, 90, 90), 1039: (80, 82, 73, 76),1016: (99, 86, 86, 100), 1025: (71, 77,80, 77), 1009: (74, 84, 83, 87), 1036:(74, 88, 74, 94), 1004: (85, 78, 90, 100)}))
 print(func914([{1000, 1001, 1002, 1005}, {1001,1002, 1004, 1005}, {1000, 1001, 1002,1004, 1005}, {1000, 1001, 1002, 1003,1004, 1005}, {1000, 1001, 1004, 1005},{1000, 1001, 1002, 1003, 1004, 1005},{1000, 1001, 1002, 1003, 1004, 1005}]))
+print(func915([{1009,1004,1005,1007},{1009,1002},{1008,1010,1003,1006},{1000,1002,1003},{1000,1002,1004,1007,1008,1009},{1002,1004,1007},{1001,1010,1002,1006},{1000,1002,1003,1005}]))
+print(func916({1007:[38,10,15,11,37,14],1005:[37,36,16,6,10,25],1000:[33,23,5,19]},9))
+print(func917('abcdefgh',0,3))
+print(func918('abcdefGHJefG','efG'))
+print(func919('ab12c345567deft'))
+print(func920('ab12CD345567dEFt'))

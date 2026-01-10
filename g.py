@@ -13,4 +13,4 @@ for i in range(1,n-1):
         count+=0
     else:
         count+=3
-print(count,end='')
+print(count)

@@ -1,4 +1,3 @@
-
 n=int(input())
 def func(m):
     str1 = str(m)
